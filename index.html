@@ -72,11 +72,11 @@
                 <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-500">
                     <h2 class="text-xl font-bold text-stone-800 mb-2">旅程概覽</h2>
                     <p class="text-stone-600 leading-relaxed">
-                        這是一趟追尋「最後紅葉」的悠閒旅程。避開了早落葉的熱點，專注於京都晚楓（下鴨神社）與大阪銀杏（大阪城）。行程節奏「慢遊」，並在第二天晚上安排了期間限定的東福寺夜間點燈作為壓軸。
+                        這是一趟追尋「最後紅葉」與「勝運」的旅程。第一天新增了超人氣的**勝尾寺**（祈求勝運的達摩寺），利用新開通的地鐵直達線輕鬆前往。第二天專注於京都晚楓與夜間點燈，行程豐富而不緊湊。
                     </p>
                     <div class="mt-4 flex gap-2 overflow-x-auto pb-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold whitespace-nowrap">🍁 晚楓限定</span>
-                        <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-semibold whitespace-nowrap">🍂 黃金銀杏</span>
+                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold whitespace-nowrap">🎯 勝尾寺達摩</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-semibold whitespace-nowrap">🍁 晚楓限定</span>
                         <span class="px-3 py-1 bg-stone-100 text-stone-700 rounded-full text-xs font-semibold whitespace-nowrap">🚶 輕鬆慢行</span>
                         <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold whitespace-nowrap">🌙 夜間點燈</span>
                     </div>
@@ -91,7 +91,7 @@
                     <div class="bg-white p-4 rounded-xl shadow-sm text-center">
                         <div class="text-2xl">🚆</div>
                         <div class="text-sm font-bold text-stone-600">主要交通</div>
-                        <div class="text-xs text-stone-500">京阪電車 & 南海電鐵</div>
+                        <div class="text-xs text-stone-500">御堂筋線・京阪・南海</div>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <!-- Tabs -->
             <div class="flex border-b border-stone-200 overflow-x-auto">
                 <button onclick="switchTab('day1')" id="tab-day1" class="flex-1 py-4 px-6 text-center transition-colors active-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 1 <span class="text-xs block font-normal text-stone-500">12/6 大阪銀杏</span>
+                    Day 1 <span class="text-xs block font-normal text-stone-500">12/6 勝運達摩</span>
                 </button>
                 <button onclick="switchTab('day2')" id="tab-day2" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
                     Day 2 <span class="text-xs block font-normal text-stone-500">12/7 京都晚楓</span>
@@ -154,48 +154,42 @@
                 <div id="tips-content" class="hidden space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
-                            <h3 class="font-bold text-lg mb-3 flex items-center">🚆 為什麼選擇京阪電車?</h3>
+                            <h3 class="font-bold text-lg mb-3 flex items-center">🚆 交通小撇步</h3>
                             <ul class="space-y-2 text-stone-600 text-sm">
-                                <li class="flex items-start"><span class="mr-2">✅</span> 您的飯店在「心齋橋」，轉乘京阪線比去梅田轉JR方便。</li>
-                                <li class="flex items-start"><span class="mr-2">✅</span> 京阪電車直達「祇園」、「下鴨(出町柳)」、「東福寺」，完全順路。</li>
-                                <li class="flex items-start"><span class="mr-2">💡</span> <strong>推薦：</strong>購買 Premium Car 指定席券 (約+500日圓)，保證有舒適座位。</li>
+                                <li class="flex items-start"><span class="mr-2">✅</span> <strong>勝尾寺交通：</strong>搭地鐵御堂筋線（往千里中央/箕面萱野方向）直達終點「箕面萱野」，再轉乘公車約20分。</li>
+                                <li class="flex items-start"><span class="mr-2">✅</span> <strong>京阪電車：</strong>Day 2 去京都建議搭京阪特急（加購 Premium Car 指定席），從淀屋橋直達出町柳，舒適又方便。</li>
                             </ul>
                         </div>
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500">
                             <h3 class="font-bold text-lg mb-3 flex items-center">🍁 紅葉現況與穿著</h3>
                             <ul class="space-y-2 text-stone-600 text-sm">
-                                <li class="flex items-start"><span class="mr-2">🍂</span> 12月初大部分紅葉已落，心態請調整為欣賞「晚秋」與「紅葉地毯」。</li>
-                                <li class="flex items-start"><span class="mr-2">🧥</span> 氣溫 5-12度。<strong>東福寺夜間點燈非常冷</strong>，務必攜帶圍巾、手套、暖暖包。</li>
+                                <li class="flex items-start"><span class="mr-2">🍂</span> 12月初紅葉已入尾聲，但勝尾寺位於山區，可能還有些許紅葉，主要看點是滿山遍野的「達摩」。</li>
+                                <li class="flex items-start"><span class="mr-2">🧥</span> 勝尾寺在山上，氣溫比市區低3-5度，<strong>務必攜帶保暖衣物</strong>。</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                        <h3 class="font-bold text-lg mb-4 text-center">Day 2 交通動線圖解</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-between text-sm text-stone-600 space-y-4 md:space-y-0">
+                        <h3 class="font-bold text-lg mb-4 text-center">Day 1 勝尾寺交通圖解</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-center text-sm text-stone-600 space-y-4 md:space-y-0 gap-4">
                             <div class="bg-stone-100 p-3 rounded text-center w-full md:w-auto">
-                                <div class="font-bold text-stone-800">心齋橋</div>
-                                <div class="text-xs">地鐵</div>
-                            </div>
-                            <div class="text-2xl text-stone-400">➔</div>
-                            <div class="bg-blue-50 p-3 rounded text-center w-full md:w-auto border border-blue-200">
-                                <div class="font-bold text-blue-800">淀屋橋</div>
-                                <div class="text-xs">京阪起點</div>
-                            </div>
-                            <div class="text-2xl text-stone-400">➔</div>
-                            <div class="bg-green-50 p-3 rounded text-center w-full md:w-auto border border-green-200">
-                                <div class="font-bold text-green-800">出町柳</div>
-                                <div class="text-xs">下鴨神社</div>
-                            </div>
-                            <div class="text-2xl text-stone-400">➔</div>
-                            <div class="bg-pink-50 p-3 rounded text-center w-full md:w-auto border border-pink-200">
-                                <div class="font-bold text-pink-800">祇園四條</div>
-                                <div class="text-xs">午餐/建仁寺</div>
+                                <div class="font-bold text-stone-800">心齋橋站</div>
+                                <div class="text-xs">御堂筋線</div>
                             </div>
                             <div class="text-2xl text-stone-400">➔</div>
                             <div class="bg-red-50 p-3 rounded text-center w-full md:w-auto border border-red-200">
-                                <div class="font-bold text-red-800">東福寺</div>
-                                <div class="text-xs">夜間點燈</div>
+                                <div class="font-bold text-red-800">箕面萱野站</div>
+                                <div class="text-xs">終點站下車</div>
+                            </div>
+                            <div class="text-2xl text-stone-400">➔</div>
+                            <div class="bg-blue-50 p-3 rounded text-center w-full md:w-auto border border-blue-200">
+                                <div class="font-bold text-blue-800">公車/計程車</div>
+                                <div class="text-xs">約20分鐘</div>
+                            </div>
+                            <div class="text-2xl text-stone-400">➔</div>
+                            <div class="bg-amber-50 p-3 rounded text-center w-full md:w-auto border border-amber-200">
+                                <div class="font-bold text-amber-800">勝尾寺</div>
+                                <div class="text-xs">達摩聖地</div>
                             </div>
                         </div>
                     </div>
@@ -215,13 +209,14 @@
         // --- Data ---
         const itineraryData = {
             day1: [
-                { time: "06:00", icon: "🛬", title: "抵達關西機場 (KIX)", type: "transport", desc: "辦理入境手續、領取行李 (預計 1 小時)。", transport: "無", tips: "記得在機場領取預訂的網卡或 ICOCA 卡。" },
+                { time: "06:00", icon: "🛬", title: "抵達關西機場 (KIX)", type: "transport", desc: "辦理入境手續、領取行李。", transport: "無", tips: "記得在機場領取預訂的網卡或 ICOCA 卡。" },
                 { time: "07:30", icon: "🚆", title: "前往大阪難波", type: "transport", desc: "搭乘特急 Rapi:t 前往市區。", transport: "南海電鐵 特急 Rapi:t (約38分)", tips: "座位舒適，適合剛下飛機補眠。" },
                 { time: "08:30", icon: "🏨", title: "飯店寄放行李", type: "logistic", desc: "Comfort Hotel Osaka Shinsaibashi", transport: "步行 15-20分 或 地鐵1站", tips: "從南海難波站走過去約15-20分，若行李重可搭地鐵御堂筋線至心齋橋站。" },
-                { time: "09:30", icon: "☕", title: "早午餐 & 休息", type: "food", desc: "心齋橋商店街或飯店附近咖啡廳。", transport: "步行", tips: "放慢腳步，享受大阪早晨。" },
-                { time: "11:00", icon: "🍂", title: "大阪城公園 (賞銀杏)", type: "sightseeing", desc: "欣賞壯觀的黃金銀杏大道。", transport: "地鐵長堀鶴見綠地線：心齋橋 -> 森之宮", tips: "紅葉雖落，但銀杏正美。推薦搭乘遊園小火車輕鬆遊覽。" },
-                { time: "15:00", icon: "🛌", title: "飯店 Check-in / 補眠", type: "logistic", desc: "回飯店休息恢復體力。", transport: "地鐵返回", tips: "紅眼班機後的關鍵休息，為明天儲備體力。" },
-                { time: "17:00", icon: "🦀", title: "心齋橋 & 道頓堀", type: "food", desc: "晚餐與夜景散策。", transport: "步行", tips: "推薦：美津の大阪燒、金龍拉麵。別忘了和固力果跑跑人合照。" }
+                { time: "09:00", icon: "🚇", title: "前往勝尾寺 (交通)", type: "transport", desc: "搭地鐵御堂筋線直達「箕面萱野」，轉乘公車。", transport: "御堂筋線 (往箕面萱野) + 阪急巴士", tips: "從心齋橋直達箕面萱野約35分。出站後搭乘往勝尾寺的巴士 (約20分)。" },
+                { time: "10:30", icon: "🎯", title: "勝尾寺 (勝運之寺)", type: "highlight", desc: "滿山遍野的達摩不倒翁，祈求勝運的能量景點。", transport: "步行參拜", tips: "必拍：達摩牆、山門倒影。記得買個達摩許願！" },
+                { time: "13:00", icon: "🍱", title: "午餐：箕面 Q's Mall", type: "food", desc: "返回箕面萱野站，在購物中心用餐。", transport: "巴士返回箕面萱野", tips: "新開幕的商場，選擇多樣，用餐環境舒適。" },
+                { time: "15:00", icon: "🏯", title: "大阪城公園 (彈性)", type: "sightseeing", desc: "若有體力可前往，欣賞銀杏大道。", transport: "御堂筋線 -> 中央線 (森之宮站)", tips: "如果累了，可以直接回心齋橋逛街或回飯店休息。" },
+                { time: "17:30", icon: "🦀", title: "道頓堀晚餐", type: "food", desc: "大阪燒、拉麵、固力果跑跑人。", transport: "地鐵/步行", tips: "晚上回到最熱鬧的道頓堀覓食。" }
             ],
             day2: [
                 { time: "08:30", icon: "🚃", title: "出發前往京都", type: "transport", desc: "使用京阪電車前往出町柳。", transport: "地鐵(淀屋橋轉) + 京阪特急 -> 出町柳", tips: "京阪特急直達且舒適，建議加購 Premium Car 指定席。" },
