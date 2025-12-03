@@ -39,10 +39,10 @@
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold text-red-800">🍁 京都清酒夜楓・大阪牛舌之旅</h1>
-                <p class="text-sm text-stone-500">2025/12/06 - 12/08 | 住四條烏丸</p>
+                <p class="text-sm text-stone-500">2025/12/06 - 12/08 | 住四條烏丸 (Comfort Inn)</p>
             </div>
             <div class="mt-2 md:mt-0 text-right text-xs md:text-sm text-stone-600 bg-stone-100 px-3 py-1 rounded-lg">
-                🏨 住宿: Comfort Inn Kyoto Shijokarasuma
+                💡 刪除 Nishimura，行程更輕鬆
             </div>
         </div>
     </header>
@@ -53,15 +53,15 @@
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
             <div class="space-y-4">
                 <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-600">
-                    <h2 class="text-xl font-bold text-stone-800 mb-2">旅程概覽 (最終確認版)</h2>
+                    <h2 class="text-xl font-bold text-stone-800 mb-2">旅程概覽 (V5 完美版)</h2>
                     <p class="text-stone-600 leading-relaxed">
-                        Day 1 專注於紅葉、漢堡排與清酒採購。Day 2 悠閒欣賞本願寺銀杏與北白川清酒巡禮。Day 3 利用梅田作為轉運點，前往大阪城賞銀杏並享用預約好的厚切牛舌，最後搭乘舒適的巴士直達機場。
+                        Day 1 集中火力在東山區，攻略「挽肉與米」、南禪寺與東福寺，並在名酒館買酒。Day 2 悠閒欣賞本願寺銀杏與二條城，晚上享受清酒。Day 3 前往大阪城與預約好的牛舌大餐。
                     </p>
                     <div class="mt-4 flex gap-2 overflow-x-auto pb-2">
                         <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-semibold whitespace-nowrap">🥩 挽肉與米・牛舌檸檬</span>
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-semibold whitespace-nowrap">🌙 東福寺/東寺 夜楓</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold whitespace-nowrap">🍂 大阪城銀杏大道</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold whitespace-nowrap">🍶 清酒買好買滿</span>
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-semibold whitespace-nowrap">🌙 東福寺夜楓</span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold whitespace-nowrap">🍂 本願寺・二條城</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold whitespace-nowrap">🍶 名酒館・SAKE壱</span>
                     </div>
                 </div>
                 <!-- Stat Cards -->
@@ -93,13 +93,13 @@
             <!-- Tabs -->
             <div class="flex border-b border-stone-200 overflow-x-auto">
                 <button onclick="switchTab('day1')" id="tab-day1" class="flex-1 py-4 px-6 text-center transition-colors active-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 1 <span class="text-xs block font-normal text-stone-500">12/6 漢堡排 & 夜楓</span>
+                    Day 1 <span class="text-xs block font-normal text-stone-500">12/6 漢堡排 & 清酒夜楓</span>
                 </button>
                 <button onclick="switchTab('day2')" id="tab-day2" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 2 <span class="text-xs block font-normal text-stone-500">12/7 銀杏與清酒</span>
+                    Day 2 <span class="text-xs block font-normal text-stone-500">12/7 銀杏與二條城</span>
                 </button>
                 <button onclick="switchTab('day3')" id="tab-day3" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 3 <span class="text-xs block font-normal text-stone-500">12/8 大阪城銀杏與牛舌</span>
+                    Day 3 <span class="text-xs block font-normal text-stone-500">12/8 大阪城牛舌與返程</span>
                 </button>
                 <button onclick="switchTab('tips')" id="tab-tips" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
                     💡 交通與店家資訊
@@ -136,43 +136,41 @@
                 <div id="tips-content" class="hidden space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
-                            <h3 class="font-bold text-lg mb-3 flex items-center">🍶 美食與清酒攻略</h3>
+                            <h3 class="font-bold text-lg mb-3 flex items-center">🍶 美食與清酒攻略 (最終版)</h3>
                             <ul class="text-sm text-stone-700 space-y-4">
                                 <li class="p-2 border-b bg-red-50 rounded">
                                     <span class="font-bold text-red-700 block">🥩 挽肉と米 (京都)</span>
                                     <span class="text-xs block mb-1">📍 祇園</span>
-                                    <span class="text-stone-500">Day 1 早上 10:00 拿券是關鍵。拿到券後去附近的南禪寺剛好。</span>
-                                </li>
-                                <li class="p-2 border-b bg-yellow-50 rounded">
-                                    <span class="font-bold text-yellow-700 block">🐮 新宿焼肉 牛たんの檸檬 (大阪本店)</span>
-                                    <span class="text-xs block mb-1">📍 大阪千日前 (近日本橋站/難波)</span>
-                                    <span class="text-stone-500">Day 3 14:00 已預約。店在「日本一歯科センタービル」1樓。</span>
+                                    <span class="text-stone-500">Day 1 早上 10:00 拿券。拿到券後去附近的南禪寺剛好。</span>
                                 </li>
                                 <li class="p-2 border-b">
                                     <span class="font-bold text-blue-700 block">名酒館タキモト</span>
                                     <span class="text-xs block mb-1">📍 五條通 (近地鐵五條站)</span>
                                     <span class="text-stone-500">Day 1 午餐後前往。有投幣式試飲，買完酒直接搭地鐵回四條飯店放酒，超順！</span>
                                 </li>
-                                <li class="p-2">
-                                    <span class="font-bold text-blue-700 block">Nishimura Liquor Store</span>
-                                    <span class="text-xs block mb-1">📍 北白川</span>
-                                    <span class="text-stone-500">Day 2 早上搭計程車去。</span>
+                                <li class="p-2 border-b">
+                                    <span class="font-bold text-blue-700 block">SAKE壱 (Sake Ichi)</span>
+                                    <span class="text-xs block mb-1">📍 河原町/木屋町</span>
+                                    <span class="text-stone-500">Day 2 晚上去。站立式酒吧，體驗當地氛圍。</span>
+                                </li>
+                                <li class="p-2 bg-yellow-50 rounded">
+                                    <span class="font-bold text-yellow-700 block">🐮 新宿焼肉 牛たんの檸檬 (大阪)</span>
+                                    <span class="text-xs block mb-1">📍 大阪千日前</span>
+                                    <span class="text-stone-500">Day 3 14:00 已預約。店在「日本一歯科センタービル」1樓。</span>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
-                            <h3 class="font-bold text-lg mb-3 flex items-center">🚆 Day 3 交通票券變更</h3>
+                            <h3 class="font-bold text-lg mb-3 flex items-center">🚆 交通關鍵 (ICOCA 為主)</h3>
                             <ul class="text-sm text-stone-700 space-y-3">
                                 <li>
-                                    <span class="font-bold text-amber-700">回程去機場：</span>
-                                    <br>因為行李在梅田，請**不要買南海電鐵 Rapi:t** (因為 Rapi:t 在難波搭，不順路)。
+                                    <span class="font-bold text-amber-700">Day 1 趕場：</span>
+                                    <br>抵達京都站 (約08:45) 後，**直接搭計程車**去飯店放行李，再直奔祇園拿券。這段錢不能省。
                                 </li>
-                                <li class="bg-stone-100 p-2 rounded">
-                                    <span class="font-bold text-green-700">推薦：機場利木津巴士</span>
-                                    <br>上車地點：新阪急飯店 (就在阪急百貨對面)。
-                                    <br>優點：買完伴手禮直接上車，不用拖行李擠電車，保證有位子。
-                                    <br>備案：JR 關空快速 (大阪站搭車，不用預約，但可能人多)。
+                                <li>
+                                    <span class="font-bold text-amber-700">市區移動：</span>
+                                    <br>因為移除了遠途的 Nishimura，您的市區移動更集中，**全程刷 ICOCA** 絕對是最划算且最方便的選擇。
                                 </li>
                             </ul>
                         </div>
@@ -201,15 +199,16 @@
                 { time: "12:30", icon: "🥩", title: "挽肉與米 (午餐)", type: "food", desc: "享受現烤漢堡排 (視整理券時間調整)。", transport: "步行", tips: "若時間充裕，可慢慢走回祇園。" },
                 { time: "14:30", icon: "🍶", title: "名酒館タキモト", type: "food", desc: "【買酒行程】前往五條通的名店。", transport: "計程車/公車", tips: "午餐後直接去買酒。這裡有豐富的試飲機。" },
                 { time: "16:00", icon: "🏨", title: "回飯店 Check-in", type: "logistic", desc: "放戰利品(酒)、洗臉休息。", transport: "地鐵：五條 ➜ 四條", tips: "這段休息非常重要！養足精神準備看夜楓。" },
-                { time: "17:30", icon: "🌙", title: "東福寺 / 東寺 夜間點燈", type: "highlight", desc: "【夜楓二選一】", transport: "地鐵+京阪 / 計程車", tips: "東福寺需預約(最後一天)。若沒預約到，改去東寺看五重塔倒影(免預約)。" },
-                { time: "19:30", icon: "🍶", title: "SAKE壱 (Sake Ichi)", type: "food", desc: "站立式清酒酒吧。", transport: "步行/公車", tips: "看完夜楓回來，去河原町喝一杯，結束完美的一天。" }
+                { time: "17:30", icon: "🌙", title: "東福寺 / 東寺 夜間點燈", type: "highlight", desc: "【夜楓二選一】", transport: "地鐵+京阪 / 計程車", tips: "東福寺需預約(最後一天)。若沒預約到，改去東寺(免預約)。" },
+                { time: "20:00", icon: "🥘", title: "晚餐 / 居酒屋", type: "food", desc: "飯店附近簡單吃或居酒屋。", transport: "步行", tips: "結束充實的一天。" }
             ],
             day2: [
                 { time: "09:30", icon: "🍂", title: "東本願寺 & 西本願寺", type: "sightseeing", desc: "【銀杏巡禮】欣賞巨大的金黃銀杏。", transport: "地鐵：四條 ➜ 京都站", tips: "早上悠閒地看銀杏，西本願寺的水吹銀杏是經典。" },
-                { time: "11:30", icon: "🍶", title: "Nishimura Liquor Store", type: "food", desc: "【地酒巡禮 2】前往北白川的名店。", transport: "計程車 (建議)", tips: "從京都車站或本願寺直接搭計程車去北白川 (約20-25分)，最省事。" },
-                { time: "13:00", icon: "🍜", title: "午餐：一乘寺拉麵", type: "food", desc: "Nishimura 附近是拉麵激戰區。", transport: "步行", tips: "體驗京都濃郁系拉麵 (如：天天有、高安)。" },
-                { time: "15:00", icon: "🛍️", title: "市區逛街 / 錦市場", type: "sightseeing", desc: "回到四條河原町/烏丸周邊。", transport: "公車/計程車", tips: "下午自由活動，可以逛逛錦市場或百貨公司。" },
-                { time: "18:00", icon: "🥘", title: "晚餐：鴨川納涼床(季節外)周邊", type: "food", desc: "先斗町或木屋町覓食。", transport: "步行", tips: "找一家氣氛好的京料理或居酒屋。" }
+                { time: "12:00", icon: "🍱", title: "午餐：京都車站周邊", type: "food", desc: "拉麵小路或地下街，選擇豐富。", transport: "步行", tips: "吃飽後準備前往下一個景點。" },
+                { time: "13:30", icon: "🏯", title: "二條城 (世界遺產)", type: "sightseeing", desc: "【填補空檔】欣賞庭園與銀杏。", transport: "地鐵/計程車", tips: "既然不去北白川了，二條城離飯店很近，銀杏也很美，非常適合午後散步。" },
+                { time: "16:00", icon: "🛍️", title: "錦市場 / 四條河原町", type: "sightseeing", desc: "逛街購物，購買伴手禮。", transport: "地鐵/步行", tips: "回飯店附近，逛逛大丸百貨或錦市場。" },
+                { time: "18:00", icon: "🍶", title: "SAKE壱 (Sake Ichi)", type: "food", desc: "【地酒巡禮】站立式清酒酒吧。", transport: "步行", tips: "位於河原町/木屋町，離飯店不遠。氣氛輕鬆。" },
+                { time: "20:00", icon: "🌙", title: "鴨川散步 & 晚餐", type: "food", desc: "享受京都的夜晚。", transport: "步行", tips: "在先斗町或木屋町覓食。" }
             ],
             day3: [
                 { time: "09:30", icon: "🧳", title: "退房 & 前往梅田", type: "transport", desc: "帶著行李搭阪急電車。", transport: "阪急電車：烏丸 ➜ 大阪梅田", tips: "直達不用轉車，約 45 分鐘。" },
