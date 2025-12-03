@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>京阪晚秋悠閒賞楓行程 (12/6 - 12/8)</title>
+    <title>京都紅葉銀杏與清酒・牛舌美食之旅 (12/6 - 12/8)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -19,47 +19,30 @@
             max-height: 400px; 
         }
         @media (min-width: 768px) { .chart-container { height: 350px; } }
-        /* Custom Scrollbar for itinerary list */
+        /* Custom Scrollbar */
         .scroller::-webkit-scrollbar { width: 6px; }
         .scroller::-webkit-scrollbar-track { background: #f1f1f1; }
-        .scroller::-webkit-scrollbar-thumb { background: #d97706; border-radius: 3px; }
-        .scroller::-webkit-scrollbar-thumb:hover { background: #b45309; }
+        .scroller::-webkit-scrollbar-thumb { background: #b91c1c; border-radius: 3px; }
+        .scroller::-webkit-scrollbar-thumb:hover { background: #991b1b; }
         .fade-in { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .active-tab { border-bottom: 3px solid #b91c1c; color: #b91c1c; font-weight: 700; }
         .inactive-tab { color: #78716c; }
         .timeline-item.active { border-left-color: #b91c1c; background-color: #fff7ed; }
     </style>
-    <!-- Chosen Palette: Late Autumn (Warm Amber, Deep Red, Slate Grey, Cream Background) -->
-    <!-- Application Structure Plan: 
-         1. Header: Quick summary of dates, theme, and accommodation.
-         2. Dashboard Overview: Visualizations of the trip pace (Activity vs Transport vs Food) to set expectations.
-         3. Interactive Tabbed Itinerary: The core navigation. Users switch between Day 1, 2, 3, and Tips.
-         4. Split View Content:
-            - Left: Vertical Timeline (clickable).
-            - Right: Dynamic Detail Card (updates on click). Shows specific transport commands, tips, and context.
-         5. Logic: Vanilla JS handles state (current day, selected event) and updates DOM/Charts. 
-         Rationale: This structure separates the "When" (Timeline) from the "How/What" (Details), preventing information overload on a mobile screen while keeping all details accessible. 
-    -->
-    <!-- Visualization & Content Choices: 
-         1. Time Allocation Donut Chart: Shows the balance of the trip (Relaxed vs Active). Goal: Inform. Lib: Chart.js.
-         2. Daily Intensity Bar Chart: Estimates 'fatigue' or activity level per day. Goal: Compare. Lib: Chart.js.
-         3. Interactive Timeline: HTML list with JS click handlers. Goal: Organize flow.
-         4. Dynamic Info Panels: JS text injection. Goal: Contextual details without clutter.
-         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
-    -->
+    <!-- Chosen Palette: Maple Red & Ginkgo Gold -->
 </head>
-<body class="bg-orange-50 text-stone-800 flex flex-col min-h-screen">
+<body class="bg-stone-50 text-stone-800 flex flex-col min-h-screen">
 
     <!-- Header Section -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div>
-                <h1 class="text-2xl font-bold text-red-800">🍁 京阪晚秋悠閒賞楓行</h1>
-                <p class="text-sm text-stone-500">2025/12/06 - 12/08 | 大阪 & 京都</p>
+                <h1 class="text-2xl font-bold text-red-800">🍁 京都清酒夜楓・大阪牛舌之旅</h1>
+                <p class="text-sm text-stone-500">2025/12/06 - 12/08 | 住四條烏丸</p>
             </div>
             <div class="mt-2 md:mt-0 text-right text-xs md:text-sm text-stone-600 bg-stone-100 px-3 py-1 rounded-lg">
-                🏨 住宿: Comfort Hotel Osaka Shinsaibashi
+                🏨 住宿: Comfort Inn Kyoto Shijokarasuma
             </div>
         </div>
     </header>
@@ -69,40 +52,39 @@
         <!-- Intro / Dashboard Section -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
             <div class="space-y-4">
-                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-500">
-                    <h2 class="text-xl font-bold text-stone-800 mb-2">旅程概覽</h2>
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-600">
+                    <h2 class="text-xl font-bold text-stone-800 mb-2">旅程概覽 (最終確認版)</h2>
                     <p class="text-stone-600 leading-relaxed">
-                        這是一趟追尋「最後紅葉」與「勝運」的旅程。第一天新增了超人氣的**勝尾寺**（祈求勝運的達摩寺），利用新開通的地鐵直達線輕鬆前往。第二天專注於京都晚楓與夜間點燈，行程豐富而不緊湊。
+                        Day 1 專注於紅葉、漢堡排與清酒採購。Day 2 悠閒欣賞本願寺銀杏與北白川清酒巡禮。Day 3 利用梅田作為轉運點，前往大阪城賞銀杏並享用預約好的厚切牛舌，最後搭乘舒適的巴士直達機場。
                     </p>
                     <div class="mt-4 flex gap-2 overflow-x-auto pb-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold whitespace-nowrap">🎯 勝尾寺達摩</span>
-                        <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-semibold whitespace-nowrap">🍁 晚楓限定</span>
-                        <span class="px-3 py-1 bg-stone-100 text-stone-700 rounded-full text-xs font-semibold whitespace-nowrap">🚶 輕鬆慢行</span>
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold whitespace-nowrap">🌙 夜間點燈</span>
+                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-semibold whitespace-nowrap">🥩 挽肉與米・牛舌檸檬</span>
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-semibold whitespace-nowrap">🌙 東福寺/東寺 夜楓</span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold whitespace-nowrap">🍂 大阪城銀杏大道</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold whitespace-nowrap">🍶 清酒買好買滿</span>
                     </div>
                 </div>
                 <!-- Stat Cards -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm text-center">
-                        <div class="text-2xl">🌡️</div>
-                        <div class="text-sm font-bold text-stone-600">氣溫預測</div>
-                        <div class="text-xs text-stone-500">5°C - 12°C (需保暖)</div>
+                        <div class="text-2xl">🚅</div>
+                        <div class="text-sm font-bold text-stone-600">去程交通</div>
+                        <div class="text-xs text-stone-500">HARUKA</div>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm text-center">
-                        <div class="text-2xl">🚆</div>
-                        <div class="text-sm font-bold text-stone-600">主要交通</div>
-                        <div class="text-xs text-stone-500">御堂筋線・京阪・南海</div>
+                        <div class="text-2xl">🚌</div>
+                        <div class="text-sm font-bold text-stone-600">回程交通</div>
+                        <div class="text-xs text-stone-500">利木津巴士 (梅田發)</div>
                     </div>
                 </div>
             </div>
 
             <!-- Visualizations -->
             <div class="bg-white p-4 rounded-xl shadow-md flex flex-col justify-center">
-                <h3 class="text-sm font-bold text-stone-500 mb-4 text-center">行程時間分配分析</h3>
+                <h3 class="text-sm font-bold text-stone-500 mb-4 text-center">行程時間分配</h3>
                 <div class="chart-container">
                     <canvas id="tripDistributionChart"></canvas>
                 </div>
-                <p class="text-xs text-center text-stone-400 mt-2">基於活動類型估算的時間比例</p>
             </div>
         </section>
 
@@ -111,16 +93,16 @@
             <!-- Tabs -->
             <div class="flex border-b border-stone-200 overflow-x-auto">
                 <button onclick="switchTab('day1')" id="tab-day1" class="flex-1 py-4 px-6 text-center transition-colors active-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 1 <span class="text-xs block font-normal text-stone-500">12/6 勝運達摩</span>
+                    Day 1 <span class="text-xs block font-normal text-stone-500">12/6 漢堡排 & 夜楓</span>
                 </button>
                 <button onclick="switchTab('day2')" id="tab-day2" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 2 <span class="text-xs block font-normal text-stone-500">12/7 京都晚楓</span>
+                    Day 2 <span class="text-xs block font-normal text-stone-500">12/7 銀杏與清酒</span>
                 </button>
                 <button onclick="switchTab('day3')" id="tab-day3" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
-                    Day 3 <span class="text-xs block font-normal text-stone-500">12/8 悠閒返程</span>
+                    Day 3 <span class="text-xs block font-normal text-stone-500">12/8 大阪城銀杏與牛舌</span>
                 </button>
                 <button onclick="switchTab('tips')" id="tab-tips" class="flex-1 py-4 px-6 text-center transition-colors inactive-tab hover:bg-stone-50 whitespace-nowrap">
-                    💡 交通與攻略
+                    💡 交通與店家資訊
                 </button>
             </div>
 
@@ -154,43 +136,45 @@
                 <div id="tips-content" class="hidden space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
-                            <h3 class="font-bold text-lg mb-3 flex items-center">🚆 交通小撇步</h3>
-                            <ul class="space-y-2 text-stone-600 text-sm">
-                                <li class="flex items-start"><span class="mr-2">✅</span> <strong>勝尾寺交通：</strong>搭地鐵御堂筋線（往千里中央/箕面萱野方向）直達終點「箕面萱野」，再轉乘公車約20分。</li>
-                                <li class="flex items-start"><span class="mr-2">✅</span> <strong>京阪電車：</strong>Day 2 去京都建議搭京阪特急（加購 Premium Car 指定席），從淀屋橋直達出町柳，舒適又方便。</li>
+                            <h3 class="font-bold text-lg mb-3 flex items-center">🍶 美食與清酒攻略</h3>
+                            <ul class="text-sm text-stone-700 space-y-4">
+                                <li class="p-2 border-b bg-red-50 rounded">
+                                    <span class="font-bold text-red-700 block">🥩 挽肉と米 (京都)</span>
+                                    <span class="text-xs block mb-1">📍 祇園</span>
+                                    <span class="text-stone-500">Day 1 早上 10:00 拿券是關鍵。拿到券後去附近的南禪寺剛好。</span>
+                                </li>
+                                <li class="p-2 border-b bg-yellow-50 rounded">
+                                    <span class="font-bold text-yellow-700 block">🐮 新宿焼肉 牛たんの檸檬 (大阪本店)</span>
+                                    <span class="text-xs block mb-1">📍 大阪千日前 (近日本橋站/難波)</span>
+                                    <span class="text-stone-500">Day 3 14:00 已預約。店在「日本一歯科センタービル」1樓。</span>
+                                </li>
+                                <li class="p-2 border-b">
+                                    <span class="font-bold text-blue-700 block">名酒館タキモト</span>
+                                    <span class="text-xs block mb-1">📍 五條通 (近地鐵五條站)</span>
+                                    <span class="text-stone-500">Day 1 午餐後前往。有投幣式試飲，買完酒直接搭地鐵回四條飯店放酒，超順！</span>
+                                </li>
+                                <li class="p-2">
+                                    <span class="font-bold text-blue-700 block">Nishimura Liquor Store</span>
+                                    <span class="text-xs block mb-1">📍 北白川</span>
+                                    <span class="text-stone-500">Day 2 早上搭計程車去。</span>
+                                </li>
                             </ul>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500">
-                            <h3 class="font-bold text-lg mb-3 flex items-center">🍁 紅葉現況與穿著</h3>
-                            <ul class="space-y-2 text-stone-600 text-sm">
-                                <li class="flex items-start"><span class="mr-2">🍂</span> 12月初紅葉已入尾聲，但勝尾寺位於山區，可能還有些許紅葉，主要看點是滿山遍野的「達摩」。</li>
-                                <li class="flex items-start"><span class="mr-2">🧥</span> 勝尾寺在山上，氣溫比市區低3-5度，<strong>務必攜帶保暖衣物</strong>。</li>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
+                            <h3 class="font-bold text-lg mb-3 flex items-center">🚆 Day 3 交通票券變更</h3>
+                            <ul class="text-sm text-stone-700 space-y-3">
+                                <li>
+                                    <span class="font-bold text-amber-700">回程去機場：</span>
+                                    <br>因為行李在梅田，請**不要買南海電鐵 Rapi:t** (因為 Rapi:t 在難波搭，不順路)。
+                                </li>
+                                <li class="bg-stone-100 p-2 rounded">
+                                    <span class="font-bold text-green-700">推薦：機場利木津巴士</span>
+                                    <br>上車地點：新阪急飯店 (就在阪急百貨對面)。
+                                    <br>優點：買完伴手禮直接上車，不用拖行李擠電車，保證有位子。
+                                    <br>備案：JR 關空快速 (大阪站搭車，不用預約，但可能人多)。
+                                </li>
                             </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                        <h3 class="font-bold text-lg mb-4 text-center">Day 1 勝尾寺交通圖解</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-center text-sm text-stone-600 space-y-4 md:space-y-0 gap-4">
-                            <div class="bg-stone-100 p-3 rounded text-center w-full md:w-auto">
-                                <div class="font-bold text-stone-800">心齋橋站</div>
-                                <div class="text-xs">御堂筋線</div>
-                            </div>
-                            <div class="text-2xl text-stone-400">➔</div>
-                            <div class="bg-red-50 p-3 rounded text-center w-full md:w-auto border border-red-200">
-                                <div class="font-bold text-red-800">箕面萱野站</div>
-                                <div class="text-xs">終點站下車</div>
-                            </div>
-                            <div class="text-2xl text-stone-400">➔</div>
-                            <div class="bg-blue-50 p-3 rounded text-center w-full md:w-auto border border-blue-200">
-                                <div class="font-bold text-blue-800">公車/計程車</div>
-                                <div class="text-xs">約20分鐘</div>
-                            </div>
-                            <div class="text-2xl text-stone-400">➔</div>
-                            <div class="bg-amber-50 p-3 rounded text-center w-full md:w-auto border border-amber-200">
-                                <div class="font-bold text-amber-800">勝尾寺</div>
-                                <div class="text-xs">達摩聖地</div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,33 +193,33 @@
         // --- Data ---
         const itineraryData = {
             day1: [
-                { time: "06:00", icon: "🛬", title: "抵達關西機場 (KIX)", type: "transport", desc: "辦理入境手續、領取行李。", transport: "無", tips: "記得在機場領取預訂的網卡或 ICOCA 卡。" },
-                { time: "07:30", icon: "🚆", title: "前往大阪難波", type: "transport", desc: "搭乘特急 Rapi:t 前往市區。", transport: "南海電鐵 特急 Rapi:t (約38分)", tips: "座位舒適，適合剛下飛機補眠。" },
-                { time: "08:30", icon: "🏨", title: "飯店寄放行李", type: "logistic", desc: "Comfort Hotel Osaka Shinsaibashi", transport: "步行 15-20分 或 地鐵1站", tips: "從南海難波站走過去約15-20分，若行李重可搭地鐵御堂筋線至心齋橋站。" },
-                { time: "09:00", icon: "🚇", title: "前往勝尾寺 (交通)", type: "transport", desc: "搭地鐵御堂筋線直達「箕面萱野」，轉乘公車。", transport: "御堂筋線 (往箕面萱野) + 阪急巴士", tips: "從心齋橋直達箕面萱野約35分。出站後搭乘往勝尾寺的巴士 (約20分)。" },
-                { time: "10:30", icon: "🎯", title: "勝尾寺 (勝運之寺)", type: "highlight", desc: "滿山遍野的達摩不倒翁，祈求勝運的能量景點。", transport: "步行參拜", tips: "必拍：達摩牆、山門倒影。記得買個達摩許願！" },
-                { time: "13:00", icon: "🍱", title: "午餐：箕面 Q's Mall", type: "food", desc: "返回箕面萱野站，在購物中心用餐。", transport: "巴士返回箕面萱野", tips: "新開幕的商場，選擇多樣，用餐環境舒適。" },
-                { time: "15:00", icon: "🏯", title: "大阪城公園 (彈性)", type: "sightseeing", desc: "若有體力可前往，欣賞銀杏大道。", transport: "御堂筋線 -> 中央線 (森之宮站)", tips: "如果累了，可以直接回心齋橋逛街或回飯店休息。" },
-                { time: "17:30", icon: "🦀", title: "道頓堀晚餐", type: "food", desc: "大阪燒、拉麵、固力果跑跑人。", transport: "地鐵/步行", tips: "晚上回到最熱鬧的道頓堀覓食。" }
+                { time: "06:00", icon: "🛬", title: "抵達關西機場 (KIX)", type: "transport", desc: "入境、領行李、領取 ICOCA 卡。", transport: "無", tips: "記得在台灣先買好 HARUKA 電子票。" },
+                { time: "07:30", icon: "🚆", title: "前往京都車站", type: "transport", desc: "搭乘 JR HARUKA 特急直達京都。", transport: "JR HARUKA (約 75 分鐘)", tips: "約 08:45 抵達京都車站。" },
+                { time: "09:00", icon: "🚕", title: "飯店寄放行李", type: "logistic", desc: "Comfort Inn Kyoto Shijokarasuma", transport: "計程車 (約 ¥1,200)", tips: "直接搭計程車最快。放完行李馬上出發去祇園。" },
+                { time: "10:00", icon: "🥩", title: "挽肉與米 (拿整理券)", type: "highlight", desc: "【首要任務】前往祇園店領取用餐券。", transport: "計程車 (約10分)", tips: "務必10點前抵達排隊。拿到券後，空檔剛好去南禪寺。" },
+                { time: "10:30", icon: "🍁", title: "南禪寺 (水路閣)", type: "sightseeing", desc: "欣賞三門絕景與復古的紅磚水路閣。", transport: "計程車/步行", tips: "就在祇園附近。紅葉季尾聲依然美麗。" },
+                { time: "12:30", icon: "🥩", title: "挽肉與米 (午餐)", type: "food", desc: "享受現烤漢堡排 (視整理券時間調整)。", transport: "步行", tips: "若時間充裕，可慢慢走回祇園。" },
+                { time: "14:30", icon: "🍶", title: "名酒館タキモト", type: "food", desc: "【買酒行程】前往五條通的名店。", transport: "計程車/公車", tips: "午餐後直接去買酒。這裡有豐富的試飲機。" },
+                { time: "16:00", icon: "🏨", title: "回飯店 Check-in", type: "logistic", desc: "放戰利品(酒)、洗臉休息。", transport: "地鐵：五條 ➜ 四條", tips: "這段休息非常重要！養足精神準備看夜楓。" },
+                { time: "17:30", icon: "🌙", title: "東福寺 / 東寺 夜間點燈", type: "highlight", desc: "【夜楓二選一】", transport: "地鐵+京阪 / 計程車", tips: "東福寺需預約(最後一天)。若沒預約到，改去東寺看五重塔倒影(免預約)。" },
+                { time: "19:30", icon: "🍶", title: "SAKE壱 (Sake Ichi)", type: "food", desc: "站立式清酒酒吧。", transport: "步行/公車", tips: "看完夜楓回來，去河原町喝一杯，結束完美的一天。" }
             ],
             day2: [
-                { time: "08:30", icon: "🚃", title: "出發前往京都", type: "transport", desc: "使用京阪電車前往出町柳。", transport: "地鐵(淀屋橋轉) + 京阪特急 -> 出町柳", tips: "京阪特急直達且舒適，建議加購 Premium Car 指定席。" },
-                { time: "10:00", icon: "⛩️", title: "下鴨神社 & 糺之森", type: "sightseeing", desc: "【晚秋紅葉 MVP】京都紅葉最晚的地方。", transport: "步行", tips: "漫步在糺之森的原始森林中，享受橘紅色的隧道。" },
-                { time: "12:30", icon: "🍱", title: "祇園 / 河原町 午餐", type: "food", desc: "享用京料理或鰻魚飯。", transport: "京阪電車：出町柳 -> 祇園四條", tips: "推薦祇園附近的餐廳，氣氛佳。" },
-                { time: "14:30", icon: "🍵", title: "花見小路 & 建仁寺", type: "sightseeing", desc: "探訪京都最古老禪寺與風神雷神圖。", transport: "步行", tips: "建仁寺遊客相對較少，潮音庭非常美。" },
-                { time: "16:30", icon: "🚃", title: "移動至東福寺", type: "transport", desc: "前往夜間點燈會場。", transport: "京阪電車：祇園四條 -> 東福寺 (約6分)", tips: "京阪電車直達，不用換線。" },
-                { time: "17:00", icon: "🌙", title: "東福寺 夜間點燈", type: "highlight", desc: "【本日重頭戲】活動最後一天 (12/7)。", transport: "步行入場", tips: "通天橋紅葉在燈光下如雲海般夢幻。戶外非常冷，請務必保暖。" },
-                { time: "19:00", icon: "🥘", title: "鴨川晚餐", type: "food", desc: "先斗町享用壽喜燒或京料理。", transport: "京阪電車：東福寺 -> 祇園四條 (折返)", tips: "雖然折返，但市區選擇多且舒適，比在寺廟旁受凍好。" },
-                { time: "21:00", icon: "🔙", title: "返回大阪", type: "transport", desc: "結束完美的一天。", transport: "京阪電車 -> 淀屋橋 -> 地鐵", tips: "注意末班車時間，但通常京阪電車很晚都有車。" }
+                { time: "09:30", icon: "🍂", title: "東本願寺 & 西本願寺", type: "sightseeing", desc: "【銀杏巡禮】欣賞巨大的金黃銀杏。", transport: "地鐵：四條 ➜ 京都站", tips: "早上悠閒地看銀杏，西本願寺的水吹銀杏是經典。" },
+                { time: "11:30", icon: "🍶", title: "Nishimura Liquor Store", type: "food", desc: "【地酒巡禮 2】前往北白川的名店。", transport: "計程車 (建議)", tips: "從京都車站或本願寺直接搭計程車去北白川 (約20-25分)，最省事。" },
+                { time: "13:00", icon: "🍜", title: "午餐：一乘寺拉麵", type: "food", desc: "Nishimura 附近是拉麵激戰區。", transport: "步行", tips: "體驗京都濃郁系拉麵 (如：天天有、高安)。" },
+                { time: "15:00", icon: "🛍️", title: "市區逛街 / 錦市場", type: "sightseeing", desc: "回到四條河原町/烏丸周邊。", transport: "公車/計程車", tips: "下午自由活動，可以逛逛錦市場或百貨公司。" },
+                { time: "18:00", icon: "🥘", title: "晚餐：鴨川納涼床(季節外)周邊", type: "food", desc: "先斗町或木屋町覓食。", transport: "步行", tips: "找一家氣氛好的京料理或居酒屋。" }
             ],
             day3: [
-                { time: "09:30", icon: "🍣", title: "黑門市場", type: "food", desc: "豪華海鮮早午餐。", transport: "地鐵/步行", tips: "體驗大阪人的廚房，推薦現烤和牛串。" },
-                { time: "11:30", icon: "🦁", title: "難波八阪神社", type: "sightseeing", desc: "巨大獅子頭神社。", transport: "步行", tips: "吸走厄運、招來好運，適合回國前參拜。" },
-                { time: "13:00", icon: "🛍️", title: "難波 Parks / 高島屋", type: "food", desc: "最後購物與甜點時光。", transport: "步行", tips: "若不想逛街，可提早去臨空城 Outlet。" },
-                { time: "17:00", icon: "🧳", title: "回飯店取行李", type: "logistic", desc: "整理戰利品。", transport: "步行", tips: "確認護照、機票都在身上。" },
-                { time: "17:30", icon: "🚶", title: "前往難波站", type: "transport", desc: "移動至南海電鐵站。", transport: "步行", tips: "預留15-20分鐘走路時間。" },
-                { time: "18:00", icon: "🚅", title: "前往關西機場", type: "transport", desc: "搭乘特急 Rapi:t (18:00或18:30班次)。", transport: "南海電鐵", tips: "約40分鐘抵達，舒適又快速。" },
-                { time: "18:50", icon: "🛫", title: "抵達機場 (KIX)", type: "logistic", desc: "辦理登機手續。", transport: "-", tips: "航班 20:45 起飛。建議起飛前2小時抵達。" }
+                { time: "09:30", icon: "🧳", title: "退房 & 前往梅田", type: "transport", desc: "帶著行李搭阪急電車。", transport: "阪急電車：烏丸 ➜ 大阪梅田", tips: "直達不用轉車，約 45 分鐘。" },
+                { time: "10:30", icon: "👜", title: "寄放行李", type: "logistic", desc: "阪急百貨梅田本店 1F 服務台。", transport: "步行", tips: "寄放行李後輕裝上陣。若服務台客滿，周邊有許多置物櫃。" },
+                { time: "11:30", icon: "🍂", title: "大阪城公園 (銀杏大道)", type: "sightseeing", desc: "欣賞壯觀的金黃銀杏隧道。", transport: "JR環狀線：大阪 ➜ 森之宮", tips: "從森之宮站出來就是噴水池和銀杏大道，不用爬天守閣。" },
+                { time: "13:00", icon: "🚇", title: "前往餐廳", type: "transport", desc: "從大阪城移動到日本橋。", transport: "地鐵千日前線：森之宮 ➜ 日本橋", tips: "直達不用換車，約 10 分鐘。" },
+                { time: "13:45", icon: "🐮", title: "新宿焼肉 牛たんの檸檬", type: "food", desc: "【預約 14:00】大阪本店午餐。", transport: "步行", tips: "位於千日前。請準時抵達享受厚切牛舌。" },
+                { time: "15:30", icon: "🛍️", title: "梅田最後購物 / 領行李", type: "sightseeing", desc: "回梅田領取行李。", transport: "地鐵：難波 ➜ 梅田", tips: "時間充裕可逛逛阪急百貨地下街買伴手禮。" },
+                { time: "17:30", icon: "🚌", title: "前往關西機場", type: "transport", desc: "搭乘機場利木津巴士。", transport: "新阪急飯店前 (梅田)", tips: "就在阪急百貨對面，不用搬行李上下樓梯，最輕鬆的選擇。" },
+                { time: "18:45", icon: "🛫", title: "抵達機場 (KIX)", type: "logistic", desc: "辦理登機，航班 20:45 起飛。", transport: "-", tips: "完美的旅程結束。" }
             ]
         };
 
@@ -263,7 +247,6 @@
 
         // --- Functions ---
         function switchTab(tabId) {
-            // Update Tab Styles
             Object.keys(tabs).forEach(key => {
                 const tab = tabs[key];
                 if (key === tabId) {
@@ -275,7 +258,6 @@
                 }
             });
 
-            // Toggle View
             if (tabId === 'tips') {
                 dayContent.classList.add('hidden');
                 tipsContent.classList.remove('hidden');
@@ -284,18 +266,17 @@
                 tipsContent.classList.add('hidden');
                 dayContent.classList.remove('hidden');
                 currentDay = tabId;
-                selectedEventIndex = 0; // Reset selection
                 renderDay(tabId);
             }
         }
 
         function renderDay(dayId) {
             const events = itineraryData[dayId];
-            timelineList.innerHTML = ''; // Clear list
+            timelineList.innerHTML = ''; 
 
             events.forEach((event, index) => {
                 const item = document.createElement('div');
-                item.className = `timeline-item p-4 border-l-4 cursor-pointer hover:bg-stone-50 transition-colors flex items-start gap-3 ${index === 0 ? 'active border-l-red-600 bg-orange-50' : 'border-l-stone-300'}`;
+                item.className = `timeline-item p-4 border-l-4 cursor-pointer hover:bg-stone-50 transition-colors flex items-start gap-3 ${index === 0 ? 'active border-l-red-600 bg-red-50' : 'border-l-stone-300'}`;
                 item.onclick = () => selectEvent(index, dayId);
                 
                 item.innerHTML = `
@@ -307,35 +288,28 @@
                 `;
                 timelineList.appendChild(item);
             });
-
-            // Trigger selection of first item
             selectEvent(0, dayId);
         }
 
         function selectEvent(index, dayId) {
-            selectedEventIndex = index;
             const events = itineraryData[dayId];
             const event = events[index];
-
-            // Update List Visuals
             const listItems = timelineList.children;
             for (let i = 0; i < listItems.length; i++) {
                 if (i === index) {
-                    listItems[i].classList.add('active', 'border-l-red-600', 'bg-orange-50');
+                    listItems[i].classList.add('active', 'border-l-red-600', 'bg-red-50');
                     listItems[i].classList.remove('border-l-stone-300');
-                    listItems[i].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {
-                    listItems[i].classList.remove('active', 'border-l-red-600', 'bg-orange-50');
+                    listItems[i].classList.remove('active', 'border-l-red-600', 'bg-red-50');
                     listItems[i].classList.add('border-l-stone-300');
                 }
             }
 
-            // Update Detail Card
             let typeColor = 'bg-stone-100 text-stone-600';
-            if (event.type === 'sightseeing') typeColor = 'bg-amber-100 text-amber-800';
+            if (event.type === 'sightseeing') typeColor = 'bg-red-100 text-red-800';
             if (event.type === 'food') typeColor = 'bg-orange-100 text-orange-800';
             if (event.type === 'transport') typeColor = 'bg-blue-100 text-blue-800';
-            if (event.type === 'highlight') typeColor = 'bg-red-100 text-red-800 border border-red-200';
+            if (event.type === 'highlight') typeColor = 'bg-yellow-100 text-yellow-800 border border-yellow-200';
 
             detailCard.innerHTML = `
                 <div class="w-full h-full flex flex-col items-start text-left animate-fade-in space-y-4">
@@ -343,16 +317,13 @@
                         <span class="text-3xl">${event.icon}</span>
                         <span class="px-3 py-1 rounded-full text-xs font-bold uppercase ${typeColor}">${getCategoryName(event.type)}</span>
                     </div>
-                    
                     <div>
                         <h2 class="text-2xl font-bold text-stone-800">${event.title}</h2>
                         <div class="text-lg text-stone-600 mt-1 font-mono">${event.time}</div>
                     </div>
-
                     <p class="text-stone-700 leading-relaxed text-lg bg-stone-50 p-4 rounded-lg w-full">
                         ${event.desc}
                     </p>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-2">
                         <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
                             <h4 class="font-bold text-blue-800 text-sm mb-1">🚆 交通建議</h4>
@@ -379,41 +350,22 @@
         }
 
         function renderCharts() {
-            // Data estimations (Time in hours)
-            // Day 1: Transport 2h, Sightseeing 3h, Food/Shop 4h, Rest/Logistics 2h
-            // Day 2: Transport 3h, Sightseeing 6h, Food/Shop 3h
-            // Day 3: Transport 2h, Sightseeing 1h, Food/Shop 4h, Logistics 2h
-            
             const ctxDistribution = document.getElementById('tripDistributionChart').getContext('2d');
-            
             new Chart(ctxDistribution, {
                 type: 'doughnut',
                 data: {
-                    labels: ['景點觀光 (銀杏/紅葉)', '交通移動', '美食購物', '住宿與機場'],
+                    labels: ['景點觀光', '交通移動', '美食購物', '住宿與機場'],
                     datasets: [{
-                        data: [10, 7, 11, 4], // Estimated total hours across 3 days
-                        backgroundColor: [
-                            '#d97706', // Amber (Sightseeing)
-                            '#60a5fa', // Blue (Transport)
-                            '#f87171', // Red (Food/Shop)
-                            '#a8a29e'  // Stone (Logistics)
-                        ],
+                        data: [13, 5, 8, 4], 
+                        backgroundColor: ['#b91c1c', '#60a5fa', '#f87171', '#a8a29e'],
                         borderWidth: 0
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'right', labels: { font: { family: "'Noto Sans TC', sans-serif" } } }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
             });
         }
 
-        // Start
         init();
-
     </script>
 </body>
 </html>
